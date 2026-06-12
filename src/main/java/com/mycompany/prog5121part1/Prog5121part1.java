@@ -1,5 +1,5 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this licenses
  */
 
 package com.mycompany.prog5121part1;
@@ -9,6 +9,7 @@ import java.util.regex.Pattern;
 import java.util.Random;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -357,4 +358,122 @@ static String returnLoginStatus(boolean status) {
     }
 }
 
-  }
+public class MessageApp {
+
+    // Arrays to store different categories of messages
+    static ArrayList<String> sentMessages = new ArrayList<>();
+    static ArrayList<String> disregardedMessages = new ArrayList<>();
+    static ArrayList<String> storedMessages = new ArrayList<>();
+    static ArrayList<String> messageHashes = new ArrayList<>();
+    static ArrayList<String> messageIDs = new ArrayList<>();
+
+    public static void main(String[] args) {
+        // Step 1: Populate arrays with test data
+        populateTestData();
+
+        // Step 2: Display stored messages
+        displayStoredMessages();
+
+        // Step 3: Display longest stored message
+        displayLongestMessage();
+
+        // Step 4: Search by Message ID
+        searchByMessageID("08388884567");
+
+        // Step 5: Search by Recipient
+        searchByRecipient("+27838884567");
+
+        // Step 6: Delete by Message Hash
+        deleteByHash("Where are you? You are late! I have asked you to be on time.");
+
+        // Step 7: Display full report
+        displayReport();
+    }
+
+    // Populate arrays with given test data
+    public static void populateTestData() {
+        sentMessages.add("Did you get the cake?");
+        sentMessages.add("It is dinner time!");
+
+        disregardedMessages.add("Yohoooo, I am at your gate.");
+
+        storedMessages.add("Where are you? You are late! I have asked you to be on time.");
+        storedMessages.add("Ok, I am leaving without you!");
+
+        messageIDs.add("+27834557896"); // ID for cake message
+        messageIDs.add("08388884567");  // ID for dinner message
+        messageIDs.add("+27838884567"); // ID for stored messages
+
+        // Generate hashes for stored messages
+        for (String msg : storedMessages) {
+            messageHashes.add(String.valueOf(msg.hashCode()));
+        }
+    }
+
+    // Display sender and recipient of stored messages
+    public static void displayStoredMessages() {
+        System.out.println("=== Stored Messages ===");
+        for (int i = 0; i < storedMessages.size(); i++) {
+            System.out.println("Message ID: " + messageIDs.get(i));
+            System.out.println("Message: " + storedMessages.get(i));
+            System.out.println("-----------------------------");
+        }
+    }
+
+    // Display longest stored message
+    public static void displayLongestMessage() {
+        String longest = "";
+        for (String msg : storedMessages) {
+            if (msg.length() > longest.length()) {
+                longest = msg;
+            }
+        }
+        System.out.println("Longest stored message: " + longest);
+    }
+
+    // Search for a message by ID
+    public static void searchByMessageID(String searchID) {
+        System.out.println("=== Search by Message ID ===");
+        for (int i = 0; i < messageIDs.size(); i++) {
+            if (messageIDs.get(i).equals(searchID)) {
+                System.out.println("Recipient: " + messageIDs.get(i));
+                System.out.println("Message: " + storedMessages.get(i));
+            }
+        }
+    }
+
+    // Search for all messages for a recipient
+    public static void searchByRecipient(String recipientSearch) {
+        System.out.println("=== Search by Recipient ===");
+        for (int i = 0; i < messageIDs.size(); i++) {
+            if (messageIDs.get(i).equals(recipientSearch)) {
+                System.out.println("Message for " + recipientSearch + ": " + storedMessages.get(i));
+            }
+        }
+    }
+
+    // Delete a message using its hash
+    public static void deleteByHash(String messageToDelete) {
+        String hashToDelete = String.valueOf(messageToDelete.hashCode());
+        for (int i = 0; i < messageHashes.size(); i++) {
+            if (messageHashes.get(i).equals(hashToDelete)) {
+                System.out.println("Deleting: " + storedMessages.get(i));
+                storedMessages.remove(i);
+                messageHashes.remove(i);
+                break;
+            }
+        }
+    }
+
+    // Display full report of stored messages
+    public static void displayReport() {
+        System.out.println("=== Stored Messages Report ===");
+        for (int i = 0; i < storedMessages.size(); i++) {
+            System.out.println("Message ID: " + messageIDs.get(i));
+            System.out.println("Message Hash: " + messageHashes.get(i));
+            System.out.println("Message: " + storedMessages.get(i));
+            System.out.println("-----------------------------");
+        }
+    }
+}
+  } 

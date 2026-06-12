@@ -432,4 +432,77 @@ public class Prog5121part1Test {
     public void testSendMessage() {
         Prog5121part1.sendMessage();
     }
+
+    /**
+     * Test of checkUserName method, of class Prog5121part1.
+     */
+    @Test
+    public void testCheckUserName() {
+        System.out.println("checkUserName");
+        String username = "";
+        boolean expResult = false;
+        boolean result = Prog5121part1.checkUserName(username);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of checkPasswordComplexity method, of class Prog5121part1.
+     */
+    @Test
+    public void testCheckPasswordComplexity() {
+        System.out.println("checkPasswordComplexity");
+        String password = "";
+        boolean expResult = false;
+        boolean result = Prog5121part1.checkPasswordComplexity(password);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of checkCellPhoneNumber method, of class Prog5121part1.
+     */
+    @Test
+    public void testCheckCellPhoneNumber() {
+        System.out.println("checkCellPhoneNumber");
+        String number = "";
+        boolean expResult = false;
+        boolean result = Prog5121part1.checkCellPhoneNumber(number);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of loginUser method, of class Prog5121part1.
+     */
+    @Test
+    public void testLoginUser() {
+        System.out.println("loginUser");
+        String username = "";
+        String password = "";
+        String storedUsername = "";
+        String storedPassword = "";
+        boolean expResult = false;
+        boolean result = Prog5121part1.loginUser(username, password, storedUsername, storedPassword);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of returnLoginStatus method, of class Prog5121part1.
+     */
+    @Test
+    public void testReturnLoginStatus() {
+        System.out.println("returnLoginStatus");
+        boolean status = false;
+        String expResult = "";
+        String result = Prog5121part1.returnLoginStatus(status);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
 }
